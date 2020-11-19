@@ -20,7 +20,7 @@ def send_message():
         if kafka_producer is not None:
             kafka_producer.close()
         return "Message Published"
-    return render_template("test.html")
+    return render_template("index.html")
 
 
 def publish_message(producer_instance, topic_name, key, value):
@@ -37,9 +37,9 @@ def publish_message(producer_instance, topic_name, key, value):
 def connect_kafka_producer():
     _producer = None
     kafkaCluster = os.getenv("KafkaCluster", "localhost:9092")
-    print(kafkaCluster)
+    #print(kafkaCluster)
     try:
-        _producer = KafkaProducer(bootstrap_servers=['localhost:9092'], api_version=(0, 10))
+        _producer = KafkaProducer(bootstrap_servers=[kafkaCluster], api_version=(0, 10))
     except Exception as ex:
         print('Exception while connecting Kafka')
         print(str(ex))

@@ -22,6 +22,6 @@ COPY flaskapi-nginx.conf /etc/nginx
 
 RUN chmod +x ./startup.sh
 
-EXPOSE 8080
+EXPOSE 5000
 
 CMD [ "./startup.sh" ]
